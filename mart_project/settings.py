@@ -7,7 +7,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.auth',
-    'mart.apps.MartConfig',
+    'mart_project.apps.mart.loader.app.MartConfig',
+    'mart_project.apps.management',
 ]
 
 DATABASES = {

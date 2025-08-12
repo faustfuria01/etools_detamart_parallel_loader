@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from mart.loader.registry import get_loader_for
+from mart_project.apps.data.registry import get_loader_for
 
 class Command(BaseCommand):
     help = 'Load DataMart model'
@@ -20,10 +20,7 @@ class Command(BaseCommand):
             '--ignore-errors', action='store_true',
             help='Continue on errors'
         )
-        parser.add_argument(
-            '--verbosity', type=int, default=1,
-            help='Verbosity'
-        )
+        # убрано: --verbosity (используем стандартный Django)
 
     def handle(self, *args, **opts):
         loader = get_loader_for(opts['model'])
@@ -31,7 +28,7 @@ class Command(BaseCommand):
             countries=opts.get('countries'),
             workers=opts.get('workers'),
             ignore_errors=opts.get('ignore_errors'),
-            verbosity=opts.get('verbosity'),
+            verbosity=opts.get('verbosity'),  # приходит от Django
             stdout=self.stdout
         )
         self.stdout.write(f"Results: {results}")

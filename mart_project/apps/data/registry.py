@@ -1,4 +1,7 @@
-from etools_datamart.apps.mart.data.models.partner import PartnerLoader
+from mart_project.apps.mart.loader.loader import EtoolsLoader
+
+class PartnerLoader(EtoolsLoader):
+    pass
 
 _loaders = {
     "mart.partner": PartnerLoader(),
